@@ -22,5 +22,15 @@ fn main() {
 
     println!("{:?}", db.get("vector1"));
 
+    let query_vector = vec![1.0, 0.0, 0.0];
+    let recommendations = db.recommend(&query_vector, 2);
+
+    for (key, similarity) in recommendations {
+        println!("Key: {}, Similarity: {}", key, similarity);
+    }
+
     println!("Hello, Vector!");
 }
+
+// cosine_similarity: Computes the cosine similarity between two vectors.
+// recommend: Finds the top-N similar vectors to a given query vector based on cosine similarity.
